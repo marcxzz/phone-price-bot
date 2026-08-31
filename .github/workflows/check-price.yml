@@ -1,0 +1,17 @@
+name: Check Nothing Phone price
+
+on:
+  schedule:
+    - cron: "0 * * * *"
+  workflow_dispatch:
+
+jobs:
+  check-price:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check price
+        run: |
+          curl -f \
+            -H "Authorization: Bearer ${{ secrets.CRON_SECRET }}" \
+            https://phone-price-bot.vercel.app/api/check-price

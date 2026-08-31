@@ -3,10 +3,19 @@ import { sendTelegramMessage } from "@/lib/telegram";
 
 const PRODUCT_URL = "https://it.nothing.tech/products/phone-4a?Colour=White&Capacity=8%2B256GB";
 
-export async function GET() {
+export async function GET(request) {
   // TESTING ONLY !!!
   // await sendTelegramMessage("Test Nothing Price Tracker: funziona!");
   // return Response.json({ ok: true });
+
+  const auth = request.headers.get("authorization");
+
+  if (auth !== `Bearer ${process.env.CRON_SECRET}`) {
+    return Response.json(
+      { error: "Unauthorized" },
+      { status: 401 }
+    );
+  }
 
   const response = await fetch(PRODUCT_URL);
 
