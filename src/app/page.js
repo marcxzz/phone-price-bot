@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic"; // disable caching for frontend fetching
+
 import { getPrices } from "@/actions/getPrices";
 import PriceChart from "@/components/PriceChart";
 
