@@ -6,6 +6,7 @@ export default async function Home() {
 
   const data = prices.map((item) => ({
     date: new Date(item.checked_at).toLocaleString("it-IT", {
+      timeZone: "Europe/Rome",
       day: "2-digit",
       month: "2-digit",
       hour: "2-digit",
