@@ -18,14 +18,16 @@ export default async function Home() {
   }));
 
   return (
-    <main className="mx-auto max-w-5xl p-8">
-      <h1 className="text-3xl font-bold">
-        Nothing Phone (4a)
-      </h1>
+    <main className="mx-auto max-w-6xl">
+      <div className="p-4">
+        <h1 className="text-3xl font-bold">
+          Nothing Phone (4a)
+        </h1>
 
-      <p className="text-muted-foreground">
-        White · 8 GB + 256 GB
-      </p>
+        <p className="text-muted-foreground">
+          White · 8 GB + 256 GB
+        </p>
+      </div>
 
       <section className="mt-8">
         <PriceChart data={data} />
