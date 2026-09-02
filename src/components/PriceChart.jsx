@@ -55,10 +55,10 @@ export default function PriceChart({ data }) {
       <LineChart
         data={data}
         margin={{
-          left: 12,
-          right: 12,
-          top: 12,
-          bottom: 12,
+          left: -15,
+          right: 10,
+          top: 10,
+          bottom: -5,
         }}
       >
         <CartesianGrid vertical={false} />
