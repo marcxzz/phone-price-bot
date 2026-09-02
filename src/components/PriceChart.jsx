@@ -112,7 +112,23 @@ export default function PriceChart({ data }) {
 
         <ChartTooltip
           cursor={false}
-          content={<ChartTooltipContent />}
+          content={
+            <ChartTooltipContent
+              labelFormatter={(_, payload) => {
+                const timestamp = payload?.[0]?.payload?.date;
+
+                if (!timestamp) return "";
+
+                return new Date(timestamp).toLocaleString("it-IT", {
+                  day: "2-digit",
+                  month: "2-digit",
+                  hour: "2-digit",
+                  minute: "2-digit",
+                  timeZone: "Europe/Rome",
+                });
+              }}
+            />
+          }
         />
 
         <Line
