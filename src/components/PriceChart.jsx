@@ -58,7 +58,7 @@ export default function PriceChart({ data }) {
           left: -15,
           right: 10,
           top: 10,
-          bottom: -5,
+          bottom: 10,
         }}
       >
         <CartesianGrid vertical={false} />
@@ -67,7 +67,40 @@ export default function PriceChart({ data }) {
           dataKey="date"
           tickLine={false}
           axisLine={false}
-        // tickFormatter={(value) => value.slice(0, 3)}
+          padding={{ left: 10, right: 10 }}
+          interval="preserveStart"
+          tick={({ x, y, payload }) => {
+            const date = new Date(payload.value);
+
+            const day = date.toLocaleDateString("it-IT", {
+              day: "2-digit",
+              month: "2-digit",
+              timeZone: "Europe/Rome",
+            });
+
+            const time = date.toLocaleTimeString("it-IT", {
+              hour: "2-digit",
+              minute: "2-digit",
+              timeZone: "Europe/Rome",
+            });
+
+            return (
+              <text
+                x={x}
+                y={y}
+                textAnchor="middle"
+                fill="currentColor"
+                fontSize={12}
+              >
+                <tspan x={x} dy="16">
+                  {day}
+                </tspan>
+                <tspan x={x} dy="16">
+                  {time}
+                </tspan>
+              </text>
+            );
+          }}
         />
 
         <YAxis

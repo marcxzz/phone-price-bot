@@ -7,15 +7,10 @@ export default async function Home() {
   const prices = await getPrices();
 
   const data = prices.map((item) => ({
-    date: new Date(item.checked_at).toLocaleString("it-IT", {
-      timeZone: "Europe/Rome",
-      day: "2-digit",
-      month: "2-digit",
-      hour: "2-digit",
-      minute: "2-digit",
-    }),
+    date: new Date(item.checked_at).getTime(),
     price: item.price,
   }));
+
 
   return (
     <main className="mx-auto max-w-6xl">
@@ -29,7 +24,7 @@ export default async function Home() {
         </p>
       </div>
 
-      <section className="mt-8">
+      <section className="mt-8 p-2">
         <PriceChart data={data} />
       </section>
     </main>
