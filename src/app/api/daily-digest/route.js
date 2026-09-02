@@ -20,7 +20,10 @@ export async function GET(request) {
   `;
 
   if (prices.length === 0) {
-    await sendTelegramMessage("Nothing Phone (4a): nessun rilevamento nelle ultime 24 ore.");
+    await sendTelegramMessage(
+      "Nothing Phone (4a): nessun rilevamento nelle ultime 24 ore.\n\n" +
+      "Consulta lo storico: https://phone-price-bot.vercel.app"
+    );
     return Response.json({ ok: true });
   }
 
@@ -38,7 +41,8 @@ export async function GET(request) {
     `Min: €${min}\n` +
     `Max: €${max}\n` +
     `Variazione: ${sign}€${variation}\n` +
-    `Rilevamenti: ${prices.length}`
+    `Rilevamenti: ${prices.length}\n` +
+    "Consulta lo storico: https://phone-price-bot.vercel.app"
   );
 
   return Response.json({ ok: true });

@@ -49,7 +49,8 @@ export async function GET(request) {
     await sendTelegramMessage(
       "\u26A0	NUOVO PREZZO per Nothing Phone (4a) 8+256 GB\n\n" +
       `Prezzo: €${previousPrice} → €${price}\n` +
-      `Variazione: ${sign}€${difference}`
+      `Variazione: ${sign}€${difference}\n` +
+      "Consulta lo storico: https://phone-price-bot.vercel.app"
     );
   }
 
